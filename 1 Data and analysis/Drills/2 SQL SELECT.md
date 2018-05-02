@@ -1,4 +1,4 @@
-##Let's confirm some of this new knowledge with a few basic exercises. Write SQL queries to return:
+## Let's confirm some of this new knowledge with a few basic exercises. Write SQL queries to return:
 
 ---
 
