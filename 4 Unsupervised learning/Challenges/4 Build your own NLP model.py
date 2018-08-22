@@ -21,6 +21,7 @@ from nltk.corpus import gutenberg, stopwords
 from collections import Counter
 %matplotlib inline
 
+
 def text_cleaner(text):
     text = re.sub(r'--',' ',text)
     text = re.sub("[\[].*?[\]]", "", text)
@@ -73,6 +74,7 @@ word_counts = bag_of_words_features(sentences, common_words)
 
 from sklearn import ensemble
 from sklearn.model_selection import train_test_split
+from skearn.model_selection import cross_val_score
 from sklearn.linear_regression import LogisticRegression
 
 
