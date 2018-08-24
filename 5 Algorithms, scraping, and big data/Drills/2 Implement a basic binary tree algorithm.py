@@ -5,64 +5,39 @@ Your job is to then write a program to traverse the tree using a breadth first t
 import random
 
 class Node:
-	def __init__(self, val):
-		self.left = None
-		self.right = None
-		self.value = val
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
 
-class Tree:
-	def __init__(self):
-		self.root = None
+    def insert(self, data):
+        if self.data:
+            if data < self.data:
+                if self.left is None:
+                    self.left = Node(data)
+                else:
+                    self.left.insert(data)
+            elif data > self.data:
+                if self.right is None:
+                    self.right = Node(data)
+                else:
+                    self.right.insert(data)
+        else:
+            self.data = data
 
-	def get_root(self):
-		return self.root
+# Print the tree
+    def PrintTree(self):
+        if self.left:
+            self.left.PrintTree()
+        print( self.data),
+        if self.right:
+            self.right.PrintTree()
 
-	def add(self, val):
-		if self.root == None:
-			self.root = Node(val)
-		else:
-			self._add(val, self.root)
-
-	def _add(self, val, node):
-		if val < node.value:
-			if not node.left:
-				self._add(val, node.left)
-			else:
-				node.left = Node(val)
-
-		else:
-			if not node.right:
-				self._add(val, node.right)
-			else:
-				node.right = Node(val)
-
-	def find(self, val):
-		if not self.root:
-			return self._find(val, self.root)
-		else:
-			return
-
-	def _find(self, val, node):
-		if val == node.value:
-			return node
-		elif val < node.value and not node.left:
-			self._find(val, node.left)
-		elif val > node.value and not node.right:
-			self._find(val, node.r)
-
-	def printTree(self):
-		if not self.root:
-			self._printTree(self.root)
-
-	def _printTree(self, node):
-		if not node:
-			self._printTree(node.left)
-			print(node.value + ' ')
-			self._printTree(node.right)
-
-
-tree = Tree()
 random_list = list(random.sample(range(100), 15))
 
-for i in random_list:
-	tree.add(i)
+root = Node(random_list[0])
+
+for i in random_list[1:]:
+	root.insert(i)
+
+root.PrintTree()

@@ -166,13 +166,20 @@ large_number = [
 import numpy as np
 large_number = ''.join(large_number)
 
-max_product = []
-for x in range(1,5):
+max_product = 0
+for x in range(1,1000):
 	nums = list(map(int, [large_number[x:x+14]]))
-	print(len(nums))
+	# print(len(nums))
 	if 0 in nums:
 		continue
+	else:
+		val = np.product(nums)
+		if val > max_product:
+			max_product = np.product(nums)
+
 print(max_product)
+
+
 '''
 9.
 A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
